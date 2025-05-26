@@ -1,7 +1,7 @@
 import express, { Express, Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import { HttpPlatform, HttpPlatformRouter, HttpPlatformRequest } from '../interfaces';
 
-export class ExpressRouterWrapper implements HttpPlatformRouter {
+export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
   private router = express.Router();
 
   private wrapRequest(req: ExpressRequest): HttpPlatformRequest {
@@ -76,13 +76,13 @@ export class ExpressRouterWrapper implements HttpPlatformRouter {
 export class ExpressPlatform implements HttpPlatform {
   private engine: Express;
   private server: any;
-  public router: ExpressRouterWrapper;
+  public router: ExpressHttpPlatformRouter;
 
   constructor(options?: { engine?: Express }) {
     this.engine = options?.engine || express();
     this.engine.use(express.json());
     this.engine.use(express.urlencoded({ extended: true }));
-    this.router = new ExpressRouterWrapper();
+    this.router = new ExpressHttpPlatformRouter();
     this.engine.use(this.router.getRouter());
 
     // Add error handling middleware

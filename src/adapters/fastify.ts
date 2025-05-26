@@ -1,7 +1,7 @@
 import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import { HttpPlatform, HttpPlatformRouter, HttpPlatformRequest } from '../interfaces';
 
-export class FastifyRouterWrapper implements HttpPlatformRouter {
+export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
   private routes: any[] = [];
 
   private wrapRequest(req: FastifyRequest): HttpPlatformRequest {
@@ -96,11 +96,11 @@ export class FastifyRouterWrapper implements HttpPlatformRouter {
 export class FastifyPlatform implements HttpPlatform {
   private engine: FastifyInstance;
   private server: any;
-  public router: FastifyRouterWrapper;
+  public router: FastifyHttpPlatformRouter;
 
   constructor(options?: { engine?: FastifyInstance }) {
     this.engine = options?.engine || fastify({ logger: false });
-    this.router = new FastifyRouterWrapper();
+    this.router = new FastifyHttpPlatformRouter();
   }
 
   async start(port: number): Promise<void> {
