@@ -11,6 +11,14 @@ During development, it became clear that many communication patterns (HTTP, WebS
 - **Hexagonal Architecture**: Ensures that controllers are decoupled from the data source, making the system more modular and testable.
 - **Validation**: Implements Zod for validating HTTP request bodies, query parameters, and URL parameters. Future plans include support for class-validator and similar validation for WebSocket events.
 
+## Installation
+
+```bash
+npm install @albasyir/platform-manager
+```
+
+
+
 ## Compatibility Table
 **Legends:**
 - ✅ Done
@@ -36,8 +44,8 @@ During development, it became clear that many communication patterns (HTTP, WebS
 | RabbitMQ       | 👷🏼‍♂️  |
 | Kafka          | 👷🏼‍♂️  |
 
-## Getting Started
-To get started with this project, follow these steps:
+## Contributing
+To contribute to this project, follow these steps:
 
 1. Clone the repository.
 2. Install dependencies:
@@ -48,9 +56,7 @@ To get started with this project, follow these steps:
    ```bash
    npm test
    ```
-
-## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+4. Happy coding!
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details. 
