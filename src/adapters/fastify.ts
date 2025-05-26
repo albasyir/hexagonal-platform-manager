@@ -1,5 +1,7 @@
 import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { HttpPlatform, HttpPlatformRouter, HttpPlatformRequest } from '../interfaces';
+import { HttpPlatformRouter } from '../types/http-platform-router';
+import { HttpPlatformRequest } from '../types/http-platform-request';
+import { HttpPlatform } from '../types/http-platform';
 
 export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
   private routes: any[] = [];

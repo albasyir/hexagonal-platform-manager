@@ -1,9 +1,4 @@
-export interface HttpPlatformRequest {
-  params: Record<string, string>;
-  query: Record<string, string>;
-  body: any;
-  headers: Record<string, string>;
-}
+import { HttpPlatformRequest } from './http-platform-request';
 
 export interface HttpPlatformRouter {
   get(path: string, handler: (req: HttpPlatformRequest) => any): void;
@@ -11,12 +6,4 @@ export interface HttpPlatformRouter {
   put(path: string, handler: (req: HttpPlatformRequest) => any): void;
   patch(path: string, handler: (req: HttpPlatformRequest) => any): void;
   delete(path: string, handler: (req: HttpPlatformRequest) => any): void;
-}
-
-export interface HttpPlatform {
-  router: HttpPlatformRouter;
-  start(port: number): Promise<void>;
-  stop(): Promise<void>;
-  getApp(): any;
-  getServer(): any;
 } 

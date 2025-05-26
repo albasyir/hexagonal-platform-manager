@@ -1,4 +1,5 @@
-import { HttpPlatform, HttpPlatformRouter } from './interfaces';
+import { HttpPlatform } from "./types/http-platform";
+import { HttpPlatformRouter } from "./types/http-platform-router";
 
 export class PlatformManager {
   private _router: HttpPlatformRouter;
@@ -20,4 +21,4 @@ export class PlatformManager {
   async start(port: number): Promise<void> {
     await this._platform.start(port);
   }
-} 
+}

@@ -1,5 +1,7 @@
 import express, { Express, Request as ExpressRequest, Response as ExpressResponse } from 'express';
-import { HttpPlatform, HttpPlatformRouter, HttpPlatformRequest } from '../interfaces';
+import { HttpPlatformRouter } from '../types/http-platform-router';
+import { HttpPlatformRequest } from '../types/http-platform-request';
+import { HttpPlatform } from '../types/http-platform';
 
 export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
   private router = express.Router();

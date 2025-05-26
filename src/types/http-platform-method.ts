@@ -1,0 +1,1 @@
+export type HttpPlatformMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS'; 
