@@ -6,6 +6,45 @@ This project aims to provide a unified platform for handling HTTP, queue-based m
 ## Background
 During development, it became clear that many communication patterns (HTTP, WebSockets, queues) share similar logic. Instead of managing separate implementations for Express, Fastify, Socket.IO, RabbitMQ, etc., this project centralizes these concerns, allowing developers to focus on delivering features rather than dealing with platform-specific details.
 
+## Architecture
+```mermaid
+graph LR
+    subgraph "External Interfaces"
+        HTTP[HTTP Request]
+        WS[WebSocket]
+        MQ[Message Queue]
+        MS[Microservice]
+    end
+
+    subgraph "Platform Manager"
+        subgraph "Ports"
+            HTTPAdapter[HTTP Adapter]
+            WSAdapter[WebSocket Adapter]
+            MQAdapter[Queue Adapter]
+            MSAdapter[Microservice Adapter]
+        end
+
+        subgraph "Application Core"
+            Controller[Controller]
+            Service[Service]
+            Domain[Domain]
+        end
+    end
+
+    HTTP --> HTTPAdapter
+    WS --> WSAdapter
+    MQ --> MQAdapter
+    MS --> MSAdapter
+
+    HTTPAdapter --> Controller
+    WSAdapter --> Controller
+    MQAdapter --> Controller
+    MSAdapter --> Controller
+
+    Controller --> Service
+    Service --> Domain
+```
+
 ## Features
 - **Unified Platform**: Supports HTTP, queue-based microservices, and WebSockets.
 - **Hexagonal Architecture**: Ensures that controllers are decoupled from the data source, making the system more modular and testable.
