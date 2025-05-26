@@ -1,5 +1,5 @@
 {
-  "name": "platform-manager",
+  "name": "hexagonal-platform-manager",
   "version": "0.1.0",
   "description": "provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications",
   "main": "dist/index.js",
