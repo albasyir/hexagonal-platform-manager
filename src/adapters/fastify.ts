@@ -19,11 +19,7 @@ export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
       path,
       handler: async (request: FastifyRequest, reply: FastifyReply) => {
         const result = handler(this.wrapRequest(request));
-        if (typeof result === 'object') {
-          reply.send(result);
-        } else {
-          reply.send(result);
-        }
+        reply.send(result);
       }
     });
   }
@@ -34,11 +30,7 @@ export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
       path,
       handler: async (request: FastifyRequest, reply: FastifyReply) => {
         const result = handler(this.wrapRequest(request));
-        if (typeof result === 'object') {
-          reply.send(result);
-        } else {
-          reply.send(result);
-        }
+        reply.send(result);
       }
     });
   }
@@ -49,11 +41,7 @@ export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
       path,
       handler: async (request: FastifyRequest, reply: FastifyReply) => {
         const result = handler(this.wrapRequest(request));
-        if (typeof result === 'object') {
-          reply.send(result);
-        } else {
-          reply.send(result);
-        }
+        reply.send(result);
       }
     });
   }
@@ -64,11 +52,7 @@ export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
       path,
       handler: async (request: FastifyRequest, reply: FastifyReply) => {
         const result = handler(this.wrapRequest(request));
-        if (typeof result === 'object') {
-          reply.send(result);
-        } else {
-          reply.send(result);
-        }
+        reply.send(result);
       }
     });
   }
@@ -79,11 +63,7 @@ export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
       path,
       handler: async (request: FastifyRequest, reply: FastifyReply) => {
         const result = handler(this.wrapRequest(request));
-        if (typeof result === 'object') {
-          reply.send(result);
-        } else {
-          reply.send(result);
-        }
+        reply.send(result);
       }
     });
   }
