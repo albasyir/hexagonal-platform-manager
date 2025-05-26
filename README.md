@@ -1,5 +1,10 @@
 # Platform Manager
 
+![Coverage: Branches](./coverage/badge-branches.svg)
+![Coverage: Functions](./coverage/badge-functions.svg)
+![Coverage: Lines](./coverage/badge-lines.svg)
+![Coverage: Statements](./coverage/badge-statements.svg)
+
 ## Overview
 This project aims to provide a unified platform for handling HTTP, queue-based microservices, and WebSocket communications. By applying hexagonal architecture, controllers can remain agnostic about the data source, ensuring they receive data consistently whether it comes from HTTP, a queue, or a microservice.
 
