@@ -1,17 +1,5 @@
 import express, { Express, Request as ExpressRequest, Response as ExpressResponse } from 'express';
-import { HttpPlatform, HttpPlatformRouter, HttpPlatformResponse, HttpPlatformRequest } from '../interfaces';
-
-export class ExpressResponseWrapper implements HttpPlatformResponse {
-  constructor(private res: ExpressResponse) {}
-
-  json(data: any): void {
-    this.res.json(data);
-  }
-
-  send(data: any): void {
-    this.res.send(data);
-  }
-}
+import { HttpPlatform, HttpPlatformRouter, HttpPlatformRequest } from '../interfaces';
 
 export class ExpressRouterWrapper implements HttpPlatformRouter {
   private router = express.Router();

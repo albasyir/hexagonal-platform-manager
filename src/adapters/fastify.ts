@@ -1,17 +1,5 @@
 import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { HttpPlatform, HttpPlatformRouter, HttpPlatformResponse, HttpPlatformRequest } from '../interfaces';
-
-export class FastifyResponseWrapper implements HttpPlatformResponse {
-  constructor(private reply: FastifyReply) {}
-
-  json(data: any): void {
-    this.reply.send(data);
-  }
-
-  send(data: any): void {
-    this.reply.send(data);
-  }
-}
+import { HttpPlatform, HttpPlatformRouter, HttpPlatformRequest } from '../interfaces';
 
 export class FastifyRouterWrapper implements HttpPlatformRouter {
   private routes: any[] = [];

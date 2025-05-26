@@ -5,11 +5,6 @@ export interface HttpPlatformRequest {
   headers: Record<string, string>;
 }
 
-export interface HttpPlatformResponse {
-  json(data: any): void;
-  send(data: any): void;
-}
-
 export interface HttpPlatformRouter {
   get(path: string, handler: (req: HttpPlatformRequest) => any): void;
   post(path: string, handler: (req: HttpPlatformRequest) => any): void;
