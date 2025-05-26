@@ -1,12 +1,12 @@
-import { Platform, PlatformManagerConfig, Router } from './types';
+import { Platform, Router } from './interfaces';
 
 export class PlatformManager {
   private _router: Router;
   private _platform: Platform;
 
-  constructor(config: PlatformManagerConfig) {
+  constructor(config: { http: Platform }) {
     this._platform = config.http;
-    this._router = this._platform.createRouter();
+    this._router = this._platform.router;
   }
 
   get router(): Router {

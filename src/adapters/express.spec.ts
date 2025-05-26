@@ -1,12 +1,12 @@
 import request from 'supertest';
-import { FastifyPlatform } from '../src/adapters/fastify';
+import { ExpressPlatform } from './express';
 
-describe('Fastify Platform', () => {
-  let platform: FastifyPlatform;
+describe('Express Platform', () => {
+  let platform: ExpressPlatform;
   let server: any;
 
   beforeEach(() => {
-    platform = new FastifyPlatform();
+    platform = new ExpressPlatform();
   });
 
   afterEach(async () => {
