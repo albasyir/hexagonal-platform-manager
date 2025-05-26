@@ -26,7 +26,6 @@ export interface Router {
   put(path: string, handler: RouteHandler): void;
   delete(path: string, handler: RouteHandler): void;
   patch(path: string, handler: RouteHandler): void;
-  use(path: string, router: Router): void;
 }
 
 export interface Platform {
