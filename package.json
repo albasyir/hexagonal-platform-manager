@@ -1,7 +1,7 @@
 {
   "name": "platform-manager",
-  "version": "1.0.0",
-  "description": "A universal HTTP routing abstraction layer for Express and Fastify",
+  "version": "0.1.0",
+  "description": "provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
