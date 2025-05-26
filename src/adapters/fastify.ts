@@ -1,7 +1,7 @@
 import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { Platform, Router, Response as PlatformResponse, Request as PlatformRequest } from '../interfaces';
+import { HttpPlatform, HttpPlatformRouter, HttpPlatformResponse, HttpPlatformRequest } from '../interfaces';
 
-export class FastifyResponseWrapper implements PlatformResponse {
+export class FastifyResponseWrapper implements HttpPlatformResponse {
   constructor(private reply: FastifyReply) {}
 
   json(data: any): void {
@@ -13,10 +13,10 @@ export class FastifyResponseWrapper implements PlatformResponse {
   }
 }
 
-export class FastifyRouterWrapper implements Router {
+export class FastifyRouterWrapper implements HttpPlatformRouter {
   private routes: any[] = [];
 
-  private wrapRequest(req: FastifyRequest): PlatformRequest {
+  private wrapRequest(req: FastifyRequest): HttpPlatformRequest {
     return {
       params: req.params as Record<string, string>,
       query: req.query as Record<string, string>,
@@ -25,7 +25,7 @@ export class FastifyRouterWrapper implements Router {
     };
   }
 
-  get(path: string, handler: (req: PlatformRequest) => any): void {
+  get(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.routes.push({
       method: 'GET',
       path,
@@ -40,7 +40,7 @@ export class FastifyRouterWrapper implements Router {
     });
   }
 
-  post(path: string, handler: (req: PlatformRequest) => any): void {
+  post(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.routes.push({
       method: 'POST',
       path,
@@ -55,7 +55,7 @@ export class FastifyRouterWrapper implements Router {
     });
   }
 
-  put(path: string, handler: (req: PlatformRequest) => any): void {
+  put(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.routes.push({
       method: 'PUT',
       path,
@@ -70,7 +70,7 @@ export class FastifyRouterWrapper implements Router {
     });
   }
 
-  patch(path: string, handler: (req: PlatformRequest) => any): void {
+  patch(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.routes.push({
       method: 'PATCH',
       path,
@@ -85,7 +85,7 @@ export class FastifyRouterWrapper implements Router {
     });
   }
 
-  delete(path: string, handler: (req: PlatformRequest) => any): void {
+  delete(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.routes.push({
       method: 'DELETE',
       path,
@@ -105,7 +105,7 @@ export class FastifyRouterWrapper implements Router {
   }
 }
 
-export class FastifyPlatform implements Platform {
+export class FastifyPlatform implements HttpPlatform {
   private engine: FastifyInstance;
   private server: any;
   public router: FastifyRouterWrapper;

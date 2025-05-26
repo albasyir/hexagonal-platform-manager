@@ -1,7 +1,7 @@
 import express, { Express, Request as ExpressRequest, Response as ExpressResponse } from 'express';
-import { Platform, Router, Response as PlatformResponse, Request as PlatformRequest } from '../interfaces';
+import { HttpPlatform, HttpPlatformRouter, HttpPlatformResponse, HttpPlatformRequest } from '../interfaces';
 
-export class ExpressResponseWrapper implements PlatformResponse {
+export class ExpressResponseWrapper implements HttpPlatformResponse {
   constructor(private res: ExpressResponse) {}
 
   json(data: any): void {
@@ -13,10 +13,10 @@ export class ExpressResponseWrapper implements PlatformResponse {
   }
 }
 
-export class ExpressRouterWrapper implements Router {
+export class ExpressRouterWrapper implements HttpPlatformRouter {
   private router = express.Router();
 
-  private wrapRequest(req: ExpressRequest): PlatformRequest {
+  private wrapRequest(req: ExpressRequest): HttpPlatformRequest {
     return {
       params: req.params as Record<string, string>,
       query: req.query as Record<string, string>,
@@ -25,7 +25,7 @@ export class ExpressRouterWrapper implements Router {
     };
   }
 
-  get(path: string, handler: (req: PlatformRequest) => any): void {
+  get(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.get(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
       if (typeof result === 'object') {
@@ -36,7 +36,7 @@ export class ExpressRouterWrapper implements Router {
     });
   }
 
-  post(path: string, handler: (req: PlatformRequest) => any): void {
+  post(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.post(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
       if (typeof result === 'object') {
@@ -47,7 +47,7 @@ export class ExpressRouterWrapper implements Router {
     });
   }
 
-  put(path: string, handler: (req: PlatformRequest) => any): void {
+  put(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.put(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
       if (typeof result === 'object') {
@@ -58,7 +58,7 @@ export class ExpressRouterWrapper implements Router {
     });
   }
 
-  patch(path: string, handler: (req: PlatformRequest) => any): void {
+  patch(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.patch(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
       if (typeof result === 'object') {
@@ -69,7 +69,7 @@ export class ExpressRouterWrapper implements Router {
     });
   }
 
-  delete(path: string, handler: (req: PlatformRequest) => any): void {
+  delete(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.delete(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
       if (typeof result === 'object') {
@@ -85,7 +85,7 @@ export class ExpressRouterWrapper implements Router {
   }
 }
 
-export class ExpressPlatform implements Platform {
+export class ExpressPlatform implements HttpPlatform {
   private engine: Express;
   private server: any;
   public router: ExpressRouterWrapper;
