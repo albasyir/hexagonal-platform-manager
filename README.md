@@ -13,7 +13,7 @@ During development, it became clear that many communication patterns (HTTP, WebS
 
 ## Architecture
 ```mermaid
-graph LR
+graph TD
     subgraph "External Interfaces"
         HTTP[HTTP Request]
         WS[WebSocket]
@@ -30,22 +30,35 @@ graph LR
         end
 
         subgraph "Application Core"
+            Interceptor[Interceptor]
             Controller[Controller]
             Service[Service]
             Domain[Domain]
         end
     end
 
+    %% External to Adapters
     HTTP --> HTTPAdapter
     WS --> WSAdapter
     MQ --> MQAdapter
     MS --> MSAdapter
 
-    HTTPAdapter --> Controller
-    WSAdapter --> Controller
-    MQAdapter --> Controller
-    MSAdapter --> Controller
+    %% Adapters to Core (with optional interceptor)
+    HTTPAdapter -->|Optional| Interceptor
+    WSAdapter -->|Optional| Interceptor
+    MQAdapter -->|Optional| Interceptor
+    MSAdapter -->|Optional| Interceptor
 
+    %% Direct path to Controller
+    HTTPAdapter -->|Direct| Controller
+    WSAdapter -->|Direct| Controller
+    MQAdapter -->|Direct| Controller
+    MSAdapter -->|Direct| Controller
+
+    %% Interceptor to Controller
+    Interceptor --> Controller
+
+    %% Core flow
     Controller --> Service
     Service --> Domain
 ```
