@@ -106,24 +106,24 @@ export class FastifyRouterWrapper implements Router {
 }
 
 export class FastifyPlatform implements Platform {
-  private app: FastifyInstance;
+  private engine: FastifyInstance;
   private server: any;
   public router: FastifyRouterWrapper;
 
-  constructor() {
-    this.app = fastify({ logger: false });
+  constructor(options?: { engine?: FastifyInstance }) {
+    this.engine = options?.engine || fastify({ logger: false });
     this.router = new FastifyRouterWrapper();
   }
 
   async start(port: number): Promise<void> {
     // Register routes
     this.router.getRoutes().forEach(route => {
-      this.app.route(route);
+      this.engine.route(route);
     });
 
     return new Promise((resolve) => {
-      this.app.listen({ port }, () => {
-        this.server = this.app.server;
+      this.engine.listen({ port }, () => {
+        this.server = this.engine.server;
         console.log(`Fastify server listening on port ${port}`);
         resolve();
       });
@@ -131,13 +131,15 @@ export class FastifyPlatform implements Platform {
   }
 
   async stop(): Promise<void> {
-    if (this.server) {
-      await this.app.close();
+    if (this.engine) {
+      await this.engine.close();
+      this.server = null;
+      this.engine = fastify({ logger: false });
     }
   }
 
   getApp(): any {
-    return this.app;
+    return this.engine;
   }
 
   getServer(): any {

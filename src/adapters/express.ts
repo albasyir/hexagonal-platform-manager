@@ -86,21 +86,34 @@ export class ExpressRouterWrapper implements Router {
 }
 
 export class ExpressPlatform implements Platform {
-  private app: Express;
+  private engine: Express;
   private server: any;
   public router: ExpressRouterWrapper;
 
-  constructor() {
-    this.app = express();
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
+  constructor(options?: { engine?: Express }) {
+    this.engine = options?.engine || express();
+    this.engine.use(express.json());
+    this.engine.use(express.urlencoded({ extended: true }));
     this.router = new ExpressRouterWrapper();
-    this.app.use(this.router.getRouter());
+    this.engine.use(this.router.getRouter());
+
+    // Add error handling middleware
+    this.engine.use((err: any, req: any, res: any, next: any) => {
+      if (err instanceof SyntaxError && (err as any).status === 400 && 'body' in err) {
+        return res.status(400).json({ error: 'Invalid JSON' });
+      }
+      next(err);
+    });
+
+    // Add 404 handler
+    this.engine.use((req: any, res: any) => {
+      res.status(404).json({ error: 'Not Found' });
+    });
   }
 
   async start(port: number): Promise<void> {
     return new Promise((resolve) => {
-      this.server = this.app.listen(port, () => {
+      this.server = this.engine.listen(port, () => {
         console.log(`Express server listening on port ${port}`);
         resolve();
       });
@@ -114,6 +127,7 @@ export class ExpressPlatform implements Platform {
           if (err) {
             reject(err);
           } else {
+            this.server = null;
             resolve();
           }
         });
@@ -122,7 +136,7 @@ export class ExpressPlatform implements Platform {
   }
 
   getApp(): any {
-    return this.app;
+    return this.engine;
   }
 
   getServer(): any {

@@ -1,8 +1,14 @@
 import { PlatformManager, ExpressPlatform, FastifyPlatform } from '../src';
+import express from 'express';
+import fastify from 'fastify';
 
-// Example with Express
+// Example with Express using existing instance
+const existingExpress = express();
+existingExpress.use(express.json());
+existingExpress.use(express.urlencoded({ extended: true }));
+
 const expressPlatform = new PlatformManager({
-  http: new ExpressPlatform()
+  http: new ExpressPlatform({ engine: existingExpress })
 });
 
 const expressRouter = expressPlatform.router;
@@ -65,9 +71,11 @@ expressRouter.delete('/users/:id', (req) => {
   };
 });
 
-// Example with Fastify
+// Example with Fastify using existing instance
+const existingFastify = fastify({ logger: false });
+
 const fastifyPlatform = new PlatformManager({
-  http: new FastifyPlatform()
+  http: new FastifyPlatform({ engine: existingFastify })
 });
 
 const fastifyRouter = fastifyPlatform.router;
