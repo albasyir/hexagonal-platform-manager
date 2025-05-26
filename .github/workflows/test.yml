@@ -11,6 +11,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
     steps:
       - uses: actions/checkout@v4
       
@@ -29,9 +32,9 @@ jobs:
       - name: Generate coverage badges
         run: npx jest-coverage-badges
       
-      - name: Commit and push if changed
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add coverage/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update coverage badges" && git push) 
+      - name: Commit coverage badges
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'coverage/'
+          message: 'chore: update coverage badges'
+          push: true 
