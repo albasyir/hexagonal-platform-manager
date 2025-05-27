@@ -75,25 +75,25 @@ export class FastifyHttpPlatformRouter implements HttpPlatformRouter {
   }
 }
 
-export class FastifyPlatform implements HttpPlatform {
-  private engine: FastifyInstance;
+export class FastifyPlatform implements HttpPlatform<FastifyInstance> {
+  private instance: FastifyInstance;
   private server: any;
   public router: FastifyHttpPlatformRouter;
 
-  constructor(options?: { engine?: FastifyInstance }) {
-    this.engine = options?.engine || fastify({ logger: false });
+  constructor(options?: { reuseInstance?: FastifyInstance }) {
+    this.instance = options?.reuseInstance || fastify({ logger: false });
     this.router = new FastifyHttpPlatformRouter();
   }
 
   async start(port: number): Promise<void> {
     // Register routes
     this.router.getRoutes().forEach(route => {
-      this.engine.route(route);
+      this.instance.route(route);
     });
 
     return new Promise((resolve) => {
-      this.engine.listen({ port }, () => {
-        this.server = this.engine.server;
+      this.instance.listen({ port }, () => {
+        this.server = this.instance.server;
         console.log(`Fastify server listening on port ${port}`);
         resolve();
       });
@@ -101,15 +101,11 @@ export class FastifyPlatform implements HttpPlatform {
   }
 
   async stop(): Promise<void> {
-    if (this.engine) {
-      await this.engine.close();
+    if (this.instance) {
+      await this.instance.close();
       this.server = null;
-      this.engine = fastify({ logger: false });
+      this.instance = fastify({ logger: false });
     }
-  }
-
-  getApp(): any {
-    return this.engine;
   }
 
   getServer(): any {

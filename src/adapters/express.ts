@@ -76,34 +76,21 @@ export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
 }
 
 export class ExpressPlatform implements HttpPlatform {
-  private engine: Express;
+  private instance: Express;
   private server: any;
   public router: ExpressHttpPlatformRouter;
 
-  constructor(options?: { engine?: Express }) {
-    this.engine = options?.engine || express();
-    this.engine.use(express.json());
-    this.engine.use(express.urlencoded({ extended: true }));
+  constructor(options?: { reuseInstance?: Express }) {
+    this.instance = options?.reuseInstance || express();
+    this.instance.use(express.json());
+    this.instance.use(express.urlencoded({ extended: true }));
     this.router = new ExpressHttpPlatformRouter();
-    this.engine.use(this.router.getRouter());
-
-    // Add error handling middleware
-    this.engine.use((err: any, req: any, res: any, next: any) => {
-      if (err instanceof SyntaxError && (err as any).status === 400 && 'body' in err) {
-        return res.status(400).json({ error: 'Invalid JSON' });
-      }
-      next(err);
-    });
-
-    // Add 404 handler
-    this.engine.use((req: any, res: any) => {
-      res.status(404).json({ error: 'Not Found' });
-    });
+    this.instance.use(this.router.getRouter());
   }
 
   async start(port: number): Promise<void> {
     return new Promise((resolve) => {
-      this.server = this.engine.listen(port, () => {
+      this.server = this.instance.listen(port, () => {
         console.log(`Express server listening on port ${port}`);
         resolve();
       });
@@ -123,10 +110,6 @@ export class ExpressPlatform implements HttpPlatform {
         });
       });
     }
-  }
-
-  getApp(): any {
-    return this.engine;
   }
 
   getServer(): any {
