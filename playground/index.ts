@@ -8,7 +8,7 @@ existingExpress.use(express.json());
 existingExpress.use(express.urlencoded({ extended: true }));
 
 const expressPlatform = new PlatformManager({
-  http: new ExpressPlatform({ engine: existingExpress })
+  http: new ExpressPlatform({ reuseInstance: existingExpress })
 });
 
 const expressRouter = expressPlatform.router;
@@ -75,7 +75,7 @@ expressRouter.delete('/users/:id', (req) => {
 const existingFastify = fastify({ logger: false });
 
 const fastifyPlatform = new PlatformManager({
-  http: new FastifyPlatform({ engine: existingFastify })
+  http: new FastifyPlatform({ reuseInstance: existingFastify })
 });
 
 const fastifyRouter = fastifyPlatform.router;
