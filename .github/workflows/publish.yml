@@ -19,10 +19,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Build
-        run: npm run build
+      - name: Build core package
+        run: npm run core:build
       
-      - name: Publish to NPM
-        run: npm publish
+      - name: Publish core package
+        run: |
+          cd packages/core
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 

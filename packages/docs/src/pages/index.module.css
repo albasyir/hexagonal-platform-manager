@@ -1,0 +1,149 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--ifm-color-primary);
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Code Example Section */
+.codeExample {
+  padding: 4rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.codeExampleTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.codeExampleContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.codeExampleTabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .codeExampleTabs {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .codeExampleTab {
+    margin-bottom: 0;
+  }
+}
+
+.codeExampleTab {
+  background: var(--ifm-card-background-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--ifm-global-shadow-lw);
+  min-width: 0;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.codeExampleTab h3 {
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.codeExampleTab pre {
+  margin: 0;
+  padding: 1rem;
+  background: var(--ifm-code-background);
+  border-radius: 4px;
+  overflow-x: auto;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Benefits Section */
+.benefits {
+  padding: 4rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.benefitsTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .benefitCard {
+    padding: 1.25rem;
+  }
+}
+
+.benefitCard {
+  background: var(--ifm-card-background-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: var(--ifm-global-shadow-lw);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.benefitCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.benefitIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.benefitCard h3 {
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.benefitCard p {
+  color: var(--ifm-text-color);
+  margin: 0;
+  line-height: 1.6;
+}
