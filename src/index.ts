@@ -1,4 +1,4 @@
 export * from './types';
 export * from './platform-manager';
-export * from './adapters/express';
-export * from './adapters/fastify'; 
+export * from './platforms/http/express/express';
+export * from './platforms/http/fastify/fastify'; 

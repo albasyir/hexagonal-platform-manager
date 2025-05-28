@@ -1,6 +1,6 @@
 import { PlatformManager } from './platform-manager';
-import { ExpressPlatform } from './adapters/express';
-import { FastifyPlatform } from './adapters/fastify';
+import { ExpressPlatform } from './platforms/http/express/express';
+import { FastifyPlatform } from './platforms/http/fastify/fastify';
 
 describe('PlatformManager', () => {
   it('should use Express platform', () => {

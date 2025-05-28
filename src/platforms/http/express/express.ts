@@ -1,7 +1,7 @@
 import express, { Express, Request as ExpressRequest, Response as ExpressResponse } from 'express';
-import { HttpPlatformRouter } from '../types/http-platform-router';
-import { HttpPlatformRequest } from '../types/http-platform-request';
-import { HttpPlatform } from '../types/http-platform';
+import { HttpPlatformRouter } from '../../../types/http-platform-router';
+import { HttpPlatformRequest } from '../../../types/http-platform-request';
+import { HttpPlatform } from '../../../types/http-platform';
 
 export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
   private router = express.Router();
@@ -15,58 +15,46 @@ export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
     };
   }
 
+  private handleResponse(result: any, res: ExpressResponse): void {
+    if (typeof result === 'object') {
+      res.json(result);
+    } else {
+      res.send(result);
+    }
+  }
+
   get(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.get(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
-      if (typeof result === 'object') {
-        res.json(result);
-      } else {
-        res.send(result);
-      }
+      this.handleResponse(result, res);
     });
   }
 
   post(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.post(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
-      if (typeof result === 'object') {
-        res.json(result);
-      } else {
-        res.send(result);
-      }
+      this.handleResponse(result, res);
     });
   }
 
   put(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.put(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
-      if (typeof result === 'object') {
-        res.json(result);
-      } else {
-        res.send(result);
-      }
+      this.handleResponse(result, res);
     });
   }
 
   patch(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.patch(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
-      if (typeof result === 'object') {
-        res.json(result);
-      } else {
-        res.send(result);
-      }
+      this.handleResponse(result, res);
     });
   }
 
   delete(path: string, handler: (req: HttpPlatformRequest) => any): void {
     this.router.delete(path, (req: ExpressRequest, res: ExpressResponse) => {
       const result = handler(this.wrapRequest(req));
-      if (typeof result === 'object') {
-        res.json(result);
-      } else {
-        res.send(result);
-      }
+      this.handleResponse(result, res);
     });
   }
 
