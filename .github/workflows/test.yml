@@ -27,7 +27,7 @@ jobs:
         run: npm ci
       
       - name: Run tests with coverage
-        run: npm run test:coverage
+        run: npm run core:test:coverage
       
       - name: Generate coverage badges
         run: npx jest-coverage-badges
