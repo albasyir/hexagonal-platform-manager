@@ -10,16 +10,18 @@ export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
     return {
       params: req.params as Record<string, string>,
       query: req.query as Record<string, string>,
-      body: req.body,
+      body: req.body === undefined ? {} : req.body,
       headers: req.headers as Record<string, string>
     };
   }
 
   private handleResponse(result: any, res: ExpressResponse): void {
-    if (typeof result === 'object') {
+    if (result === null) {
+      res.type('text/plain').send('');
+    } else if (typeof result === 'object') {
       res.json(result);
     } else {
-      res.send(result);
+      res.type('text/plain').send(String(result));
     }
   }
 
