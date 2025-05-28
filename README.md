@@ -1,11 +1,13 @@
-# Platform Manager
+# Transportex
 
-![Coverage: Branches](./coverage/badge-branches.svg)
-![Coverage: Functions](./coverage/badge-functions.svg)
-![Coverage: Lines](./coverage/badge-lines.svg)
-![Coverage: Statements](./coverage/badge-statements.svg)
+![Coverage: Branches](./package/core/coverage/badge-branches.svg)
+![Coverage: Functions](./package/core/coverage/badge-functions.svg)
+![Coverage: Lines](./package/core/coverage/badge-lines.svg)
+![Coverage: Statements](./package/core/coverage/badge-statements.svg)
 
-## Overview
+a platform manager that provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications
+
+## Overview 
 This project aims to provide a unified platform for handling HTTP, queue-based microservices, and WebSocket communications. By applying hexagonal architecture, controllers can remain agnostic about the data source, ensuring they receive data consistently whether it comes from HTTP, a queue, or a microservice.
 
 The platform manager abstracts away the complexities of different communication protocols and their implementations. Whether you're using Express.js, Fastify, or any other HTTP framework, you can focus on defining your routes and handling business logic without worrying about platform-specific details like JSON parsing, file handling, or request processing.
