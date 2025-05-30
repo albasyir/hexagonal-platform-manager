@@ -1,5 +1,5 @@
 {
-  "name": "@transportex/docs",
+  "name": "@uep/docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,8 +24,9 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.0",
+    "@docusaurus/tsconfig": "3.8.0",
     "@docusaurus/types": "3.8.0",
-    "@docusaurus/tsconfig": "3.8.0"
+    "typescript": "^5.8.3"
   },
   "browserslist": {
     "production": [

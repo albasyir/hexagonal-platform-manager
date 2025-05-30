@@ -1,4 +1,4 @@
-import { HttpPlatformRequest } from './http-platform-request';
+import { HttpPlatformRequest } from './http-platform-request.ts';
 
 export interface HttpPlatformRouter {
   get(path: string, handler: (req: HttpPlatformRequest) => any): void;

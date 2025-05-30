@@ -1,23 +1,21 @@
 {
   "name": "transportex-monorepo",
+  "type": "module",
   "description": "provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "core:dev": "npm run dev --workspace=@transportex/core",
-    "core:build": "npm run build --workspace=@transportex/core",
-    "core:test": "npm run test --workspace=@transportex/core",
-    "core:test:coverage": "npm run test:coverage --workspace=@transportex/core",
-    "core:test:watch": "npm run test:watch --workspace=@transportex/core",
-    "docs:dev": "npm run start --workspace=@transportex/docs",
-    "docs:build": "npm run build --workspace=@transportex/docs",
-    "playground": "npm run playground --workspace=@transportex/core",
+    "core:dev": "npm run dev --workspace=@uep/core",
+    "core:build": "npm run build --workspace=@uep/core",
+    "core:test": "npm run test --workspace=@uep/core",
+    "core:test:coverage": "npm run test:coverage --workspace=@uep/core",
+    "core:test:watch": "npm run test:watch --workspace=@uep/core",
+    "docs:dev": "npm run start --workspace=@uep/docs",
+    "docs:build": "npm run build --workspace=@uep/docs",
+    "playground": "npm run playground --workspace=@uep/core",
     "all:test": "npm run test --workspaces",
     "all:build": "npm run build --workspaces"
-  },
-  "devDependencies": {
-    "typescript": "^5.3.3"
   }
 }

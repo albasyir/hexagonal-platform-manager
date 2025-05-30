@@ -1,7 +1,7 @@
 import express, { Express, Request as ExpressRequest, Response as ExpressResponse } from 'express';
-import { HttpPlatformRouter } from '../../../types/http-platform-router';
-import { HttpPlatformRequest } from '../../../types/http-platform-request';
-import { HttpPlatform } from '../../../types/http-platform';
+import { HttpPlatformRouter } from '../../../types/http-platform-router.ts';
+import { HttpPlatformRequest } from '../../../types/http-platform-request.ts';
+import { HttpPlatform } from '../../../types/http-platform.ts';
 
 export class ExpressHttpPlatformRouter implements HttpPlatformRouter {
   private router = express.Router();
@@ -81,7 +81,9 @@ export class ExpressPlatform implements HttpPlatform {
   async start(port: number): Promise<void> {
     return new Promise((resolve) => {
       this.server = this.instance.listen(port, () => {
-        console.log(`Express server listening on port ${port}`);
+        if (port > 0) {
+          console.log(`Express server listening on port ${port}`);
+        }
         resolve();
       });
     });

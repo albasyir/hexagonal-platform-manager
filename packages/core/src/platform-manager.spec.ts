@@ -1,21 +1,23 @@
-import { PlatformManager } from './platform-manager';
-import { ExpressPlatform } from './platforms/http/express/express';
-import { FastifyPlatform } from './platforms/http/fastify/fastify';
+import { test } from 'uvu'
+import * as assert from 'uvu/assert'
+import { PlatformManager } from './platform-manager.ts'
+import { ExpressPlatform } from './platforms/http/express/express.ts'
+import { FastifyPlatform } from './platforms/http/fastify/fastify.ts'
 
-describe('PlatformManager', () => {
-  it('should use Express platform', () => {
-    const manager = new PlatformManager({ http: new ExpressPlatform() });
-    expect(manager.platform).toBeInstanceOf(ExpressPlatform);
-  });
+test('should use Express platform', () => {
+  const manager = new PlatformManager({ http: new ExpressPlatform() })
+  assert.instance(manager.platform, ExpressPlatform)
+})
 
-  it('should use Fastify platform', () => {
-    const manager = new PlatformManager({ http: new FastifyPlatform() });
-    expect(manager.platform).toBeInstanceOf(FastifyPlatform);
-  });
+test('should use Fastify platform', () => {
+  const manager = new PlatformManager({ http: new FastifyPlatform() })
+  assert.instance(manager.platform, FastifyPlatform)
+})
 
-  it('should throw error for unsupported platform', () => {
-    // There is no built-in way to test unsupported platform since the constructor expects a Platform instance.
-    // This test is not applicable with the current design.
-    expect(true).toBe(true);
-  });
-}); 
+test('should throw error for unsupported platform', () => {
+  // There is no built-in way to test unsupported platform since the constructor expects a Platform instance.
+  // This test is not applicable with the current design.
+  assert.is(true, true)
+})
+
+test.run() 

@@ -1,4 +1,4 @@
-import { HttpPlatformRouter } from './http-platform-router';
+import { HttpPlatformRouter } from './http-platform-router.ts';
 
 export interface HttpPlatform<EngineInstance extends any = any> {
   router: HttpPlatformRouter;

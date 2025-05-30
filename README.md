@@ -1,128 +1,95 @@
-# Transportex
+# UEP — Unleashed Exagonal Protocol
 
-![Coverage: Branches](./package/core/coverage/badge-branches.svg)
-![Coverage: Functions](./package/core/coverage/badge-functions.svg)
-![Coverage: Lines](./package/core/coverage/badge-lines.svg)
-![Coverage: Statements](./package/core/coverage/badge-statements.svg)
+**UEP** is a modern platform abstraction layer designed to unify HTTP, Realtime, and Messaging systems under one powerful protocol-inspired architecture.
 
-a platform manager that provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications
+Think: Express + Fastify + Socket.IO + RabbitMQ... all in one plug-and-play interface — portable, interceptable, and 100% modular.
 
-## Overview 
-This project aims to provide a unified platform for handling HTTP, queue-based microservices, and WebSocket communications. By applying hexagonal architecture, controllers can remain agnostic about the data source, ensuring they receive data consistently whether it comes from HTTP, a queue, or a microservice.
 
-The platform manager abstracts away the complexities of different communication protocols and their implementations. Whether you're using Express.js, Fastify, or any other HTTP framework, you can focus on defining your routes and handling business logic without worrying about platform-specific details like JSON parsing, file handling, or request processing.
+## ✨ Why "UEP"? What is *Exagonal*?
 
-## Background
-During development, it became clear that many communication patterns (HTTP, WebSockets, queues) share similar logic. Instead of managing separate implementations for Express, Fastify, Socket.IO, RabbitMQ, etc., this project centralizes these concerns, allowing developers to focus on delivering features rather than dealing with platform-specific details.
+UEP stands for **Unleashed Exagonal Protocol**.
 
-### Key Benefits
+Unlike the traditional "Hexagonal Architecture" which focuses on Ports and Adapters, **Exagonal** is our evolved take — where protocols, interceptors, and platform behavior are first-class citizens.
 
-#### Platform Independence
-- **Framework Agnostic**: Switch between different platforms (Express/Fastify for HTTP, Socket.IO/WebSocket for real-time, RabbitMQ/Kafka for queues) without changing your application code
-- **Infinite Scalability**: Your application remains decoupled from any specific platform implementation, allowing for seamless scaling and platform changes
-- **Consistent Interface**: Different platforms have different ways of handling requests, events, or messages, but our interceptors provide a unified abstraction layer
+>[!INFO]
+> Not just Hexagonal. It's **Exagonal** — a boundary-less, scalable, plug-aware system that embraces both structure and freedom.
 
-#### Simplified Development
-- **Focus on Business Logic**: Define routes, event handlers, or queue consumers without worrying about platform-specific implementation details
-- **Automatic Processing**: Let the platform handle JSON parsing, file uploads, request processing, event handling, and message queuing
-- **Easy Platform Migration**: Change your underlying platform (HTTP server, WebSocket implementation, or message broker) without rewriting your application code
+We intentionally dropped the "H" to show:  
+- it's **not a copy**,  
+- it's **not just theory**,  
+- it's **a flexible protocol engine** built for real-life architecture.
 
-## Architecture
+
+## 🔧 Key Features
+
+- 🔌 **Pluggable Platform Support**
+  - HTTP: Express, Fastify (wotking now but experimental)
+  - Realtime: Socket.IO (in plan, need to make standard first)
+  - Messaging: RabbitMQ (fixed plan, soon)
+  - more will comming
+
+- 🔌 **Pluggable Runtime Support** (unit test passed for now)
+  - NodeJS 
+  - Bun 
+  - Deno (passed with warning)
+
+- 🧩 **Composable Middleware & Hook System** (soon)
+  - Intercept Before and After
+  - Validation included
+
+- 🛡️ **Unified Schema Validation** (soon)
+  - Zod-first, type-safe across body, params, query
+
+- 🔁 **Protocol-Oriented, Not Framework-Locked**
+  - Build once, run on any platform
+
+
+## 🧭 Architecture Overview
+
+from this architecture you can see we will focus on bussines and routing instead of overthinking about everything
+
 ```mermaid
-graph LR
-    subgraph "External Interfaces"
-        HTTP[HTTP Request]
-        WS[WebSocket]
-        MQ[Message Queue]
-    end
+flowchart TD
+  subgraph Platform
+    A1[Express]
+    A2[Fastify]
+    A3[H3]
+    A4[Socket.IO]
+    A5[RabbitMQ]
+  end
 
-    subgraph "Platform Manager"
-        subgraph "Ports"
-            HTTPAdapter[HTTP Adapter]
-            WSAdapter[WebSocket Adapter]
-            MQAdapter[Queue Adapter]
-        end
+  subgraph UEP Core
+    B1[Protocol Handler]
+    B2[Schema Validator]
+    B3[Interceptor Engine]
+    B4[Router Adapter]
+  end
 
-        subgraph "Platform Layer"
-            Interceptor[Interceptor]
-            Controller[Controller]
-        end
-    end
+  subgraph User Code
+    C1[Define Routes]
+    C2[Business Logic]
+  end
 
-    subgraph "Application Core"
-        Service[Service]
-        Domain[Domain]
-    end
+  A1 --> B4
+  A2 --> B4
+  A3 --> B4
+  A4 --> B4
+  A5 --> B4
 
-    %% External to Adapters
-    HTTP --> HTTPAdapter
-    WS --> WSAdapter
-    MQ --> MQAdapter
+  B4 --> B1
+  B1 --> B2
+  B1 --> B3
 
-    %% Adapters to Platform
-    HTTPAdapter --> Interceptor
-    WSAdapter --> Interceptor
-    MQAdapter --> Interceptor
-
-    %% Platform Layer Flow
-    Interceptor --> Controller
-
-    %% Platform to Application
-    Controller --> Service
-    Service --> Domain
+  B1 --> C1
+  B2 --> C2
+  B3 --> C2
 ```
 
-## Features
-- **Unified Platform**: Supports HTTP, queue-based microservices, and WebSockets.
-- **Hexagonal Architecture**: Ensures that controllers are decoupled from the data source, making the system more modular and testable.
-- **Validation**: Implements Zod for validating HTTP request bodies, query parameters, and URL parameters. Future plans include support for class-validator and similar validation for WebSocket events.
 
-## Installation
+## 📦 Packages
 
 ```bash
-npm install @albasyir/platform-manager
-```
-
-
-
-## Compatibility Table
-**Legends:**
-- ✅ Done
-- ⚠️ Experimental
-- 👷🏼‍♂️ In Development
-
-### HTTP Protocol
-| Implementation | Status | Supported Methods |
-|----------------|--------|-------------------|
-| Express.js     | ⚠️     | GET, POST, PUT, DELETE, PATCH |
-| Fastify        | ⚠️     | GET, POST, PUT, DELETE, PATCH |
-| Elysia         | 👷🏼‍♂️  |  |
-
-### WebSocket Protocol
-| Implementation | Status |
-|----------------|--------|
-| Socket.IO      | 👷🏼‍♂️  |
-| WebSocket (native) | 👷🏼‍♂️ |
-
-### Microservice Protocol
-| Implementation | Status |
-|----------------|--------|
-| RabbitMQ       | 👷🏼‍♂️  |
-| Kafka          | 👷🏼‍♂️  |
-
-## Contributing
-To contribute to this project, follow these steps:
-
-1. Clone the repository.
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the tests:
-   ```bash
-   npm test
-   ```
-4. Happy coding!
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details. 
+@uep/core
+@uep/http-express-platform
+@uep/http-fastify-platform
+@uep/broker-rabbitmq-platform

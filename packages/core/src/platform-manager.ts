@@ -1,5 +1,5 @@
-import { HttpPlatform } from "./types/http-platform";
-import { HttpPlatformRouter } from "./types/http-platform-router";
+import { HttpPlatform } from "./types/http-platform.ts";
+import { HttpPlatformRouter } from "./types/http-platform-router.ts";
 
 export class PlatformManager {
   private _router: HttpPlatformRouter;
