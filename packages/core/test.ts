@@ -6,12 +6,12 @@ async function getSpecFiles(): Promise<string[]> {
   // when deno
   if (isDeno) {
     // Generate import_map.json
-    const pkg = JSON.parse(Deno.readTextFileSync("package.json"));
+    const pkg = JSON.parse(globalThis.Deno.readTextFileSync("package.json"));
     const imports = {};
     for (const dep in pkg.devDependencies) {
       imports[dep] = `npm:${dep}@${pkg.devDependencies[dep]}`;
     }
-    await Deno.writeTextFile("import_map.json", JSON.stringify({ imports }, null, 2));
+    await globalThis.Deno.writeTextFile("import_map.json", JSON.stringify({ imports }, null, 2));
 
     // Load test spec files
     const { walk } = await import("https://deno.land/std@0.224.0/fs/walk.ts")
