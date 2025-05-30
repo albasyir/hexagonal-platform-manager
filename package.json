@@ -1,5 +1,5 @@
 {
-  "name": "transportex-monorepo",
+  "name": "uep-monorepo",
   "type": "module",
   "description": "provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications",
   "private": true,

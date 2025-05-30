@@ -1,15 +1,17 @@
 {
   "imports": {
-    "tsx": "npm:tsx@^4.19.4",
+    "@istanbuljs/nyc-config-typescript": "npm:@istanbuljs/nyc-config-typescript@^1.0.2",
     "@types/express": "npm:@types/express@^4.17.21",
     "@types/node": "npm:@types/node@^20.11.24",
     "@types/supertest": "npm:@types/supertest@^6.0.2",
+    "c8": "npm:c8@^9.1.0",
     "express": "npm:express@^4.18.3",
     "fastify": "npm:fastify@^4.26.2",
     "globby": "npm:globby@^14.1.0",
     "supertest": "npm:supertest@^6.3.4",
     "ts-node": "npm:ts-node@^10.9.2",
     "ts-node-dev": "npm:ts-node-dev@^2.0.0",
+    "tsx": "npm:tsx@^4.19.4",
     "typescript": "npm:typescript@^5.8.3",
     "uvu": "npm:uvu@^0.5.6"
   }
