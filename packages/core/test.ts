@@ -41,7 +41,7 @@ async function main() {
   try {
     const files = await getSpecFiles()
 
-    for (const file of files) import(file)
+    for (const file of files) await import(file)
   } catch (error) {
     console.error("Error running tests:", error)
     process.exit(1)
