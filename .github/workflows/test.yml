@@ -29,12 +29,12 @@ jobs:
       - name: Run tests with coverage
         run: npm run core:test:coverage
       
-      - name: Generate coverage badges
-        run: npx jest-coverage-badges
+      # - name: Generate coverage badges
+      #   run: npx jest-coverage-badges
       
-      - name: Commit coverage badges
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: 'coverage/'
-          message: 'chore: update coverage badges'
-          push: true 
+      # - name: Commit coverage badges
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     add: 'coverage/'
+      #     message: 'chore: update coverage badges'
+      #     push: true 
