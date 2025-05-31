@@ -91,7 +91,7 @@ flowchart TD
 ## 📦 Packages
 
 ```bash
-@uep/core
+@uep/manager
 @uep/http-express-platform
 @uep/http-fastify-platform
 @uep/broker-rabbitmq-platform

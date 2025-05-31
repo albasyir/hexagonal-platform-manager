@@ -46,7 +46,7 @@ We intentionally dropped the "H" to show:
 ## Installation
 
 ```bash
-npm install @uep/core
+npm install @uep/manager
 ```
 
 ## Quick Start
@@ -54,7 +54,7 @@ npm install @uep/core
 Here's a simple example using Express:
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 
 // Create an Express instance
@@ -120,7 +120,7 @@ flowchart TD
 ## 📦 Packages
 
 ```bash
-@uep/core
+@uep/manager
 @uep/http-express-platform
 @uep/http-fastify-platform
 @uep/broker-rabbitmq-platform

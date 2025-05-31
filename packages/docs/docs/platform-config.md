@@ -15,7 +15,7 @@ The Express platform allows you to use Express.js as your HTTP server. You can e
 #### Basic Configuration
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 
 // Create a new Express instance
@@ -61,7 +61,7 @@ The Fastify platform allows you to use Fastify as your HTTP server. Like Express
 #### Basic Configuration
 
 ```typescript
-import { UEP, FastifyPlatform } from '@uep/core';
+import { UEP, FastifyPlatform } from '@uep/manager';
 import fastify from 'fastify';
 
 // Create a new Fastify instance

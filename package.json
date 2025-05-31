@@ -7,14 +7,14 @@
     "packages/*"
   ],
   "scripts": {
-    "core:dev": "npm run dev --workspace=@uep/core",
-    "core:build": "npm run build --workspace=@uep/core",
-    "core:test": "npm run test --workspace=@uep/core",
-    "core:test:coverage": "npm run test:coverage --workspace=@uep/core",
-    "core:test:watch": "npm run test:watch --workspace=@uep/core",
+    "core:dev": "npm run dev --workspace=@uep/manager",
+    "core:build": "npm run build --workspace=@uep/manager",
+    "core:test": "npm run test --workspace=@uep/manager",
+    "core:test:coverage": "npm run test:coverage --workspace=@uep/manager",
+    "core:test:watch": "npm run test:watch --workspace=@uep/manager",
     "docs:dev": "npm run start --workspace=@uep/docs",
     "docs:build": "npm run build --workspace=@uep/docs",
-    "playground": "npm run playground --workspace=@uep/core",
+    "playground": "npm run playground --workspace=@uep/manager",
     "all:test": "npm run test --workspaces",
     "all:build": "npm run build --workspaces"
   }

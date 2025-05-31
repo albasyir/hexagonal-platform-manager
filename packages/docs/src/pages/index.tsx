@@ -32,41 +32,35 @@ function CodeExample() {
   return (
     <div className={styles.codeExample}>
       <div className="container">
-        <h2 className={styles.codeExampleTitle}>One Router, Cross Platform</h2>
+        <h2 className={styles.codeExampleTitle}>Never "lock-in" vendor</h2>
         <div className={styles.codeExampleContent}>
           <div className={styles.codeExampleTabs}>
             <div className={styles.codeExampleTab}>
               <h3>Express</h3>
               <pre>
-                <code>{`import { PlatformManager, ExpressPlatform } from '@albasyir/platform-manager';
-import express from 'express';
+                <code>{`import { PlatformManager, ExpressPlatform } from '@uep/manager';
 
-const app = express();
-const platform = new PlatformManager({
-  http: new ExpressPlatform({ reuseInstance: app })
+const manager = new PlatformManager({
+  http: new ExpressPlatform()
 });
 
-const router = platform.router;
-router.get('/', () => 'Hello World!');
+manager.router.get('/', () => 'Hello World!');
 
-await platform.start(3000);`}</code>
+await manager.start(3000);`}</code>
               </pre>
             </div>
             <div className={styles.codeExampleTab}>
               <h3>Fastify</h3>
               <pre>
-                <code>{`import { PlatformManager, FastifyPlatform } from '@albasyir/platform-manager';
-import fastify from 'fastify';
+                <code>{`import { PlatformManager, FastifyPlatform } from '@uep/manager';
 
-const app = fastify();
-const platform = new PlatformManager({
-  http: new FastifyPlatform({ reuseInstance: app })
+const manager = new PlatformManager({
+  http: new FastifyPlatform()
 });
 
-const router = platform.router;
-router.get('/', () => 'Hello World!');
+manager.router.get('/', () => 'Hello World!');
 
-await platform.start(3000);`}</code>
+await manager.start(3000);`}</code>
               </pre>
             </div>
           </div>
@@ -147,7 +141,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="Unified API for Express, Fastify, and More - One Router, Cross Platform">
+      description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
         {/* <HomepageFeatures /> */}

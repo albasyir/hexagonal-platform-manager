@@ -8430,7 +8430,24 @@
   },
   "workspace": {
     "members": {
-      "packages/core": {
+      "packages/docs": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@docusaurus/core@3.8.0",
+            "npm:@docusaurus/module-type-aliases@3.8.0",
+            "npm:@docusaurus/preset-classic@3.8.0",
+            "npm:@docusaurus/tsconfig@3.8.0",
+            "npm:@docusaurus/types@3.8.0",
+            "npm:@mdx-js/react@3",
+            "npm:clsx@^2.1.0",
+            "npm:prism-react-renderer@^2.3.0",
+            "npm:react-dom@^18.2.0",
+            "npm:react@^18.2.0",
+            "npm:typescript@^5.8.3"
+          ]
+        }
+      },
+      "packages/manager": {
         "packageJson": {
           "dependencies": [
             "npm:@istanbuljs/nyc-config-typescript@^1.0.2",
@@ -8447,23 +8464,6 @@
             "npm:tsx@^4.19.4",
             "npm:typescript@^5.8.3",
             "npm:uvu@~0.5.6"
-          ]
-        }
-      },
-      "packages/docs": {
-        "packageJson": {
-          "dependencies": [
-            "npm:@docusaurus/core@3.8.0",
-            "npm:@docusaurus/module-type-aliases@3.8.0",
-            "npm:@docusaurus/preset-classic@3.8.0",
-            "npm:@docusaurus/tsconfig@3.8.0",
-            "npm:@docusaurus/types@3.8.0",
-            "npm:@mdx-js/react@3",
-            "npm:clsx@^2.1.0",
-            "npm:prism-react-renderer@^2.3.0",
-            "npm:react-dom@^18.2.0",
-            "npm:react@^18.2.0",
-            "npm:typescript@^5.8.3"
           ]
         }
       }

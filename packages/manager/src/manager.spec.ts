@@ -1,6 +1,6 @@
 import { test } from 'uvu'
 import * as assert from 'uvu/assert'
-import { PlatformManager } from './platform-manager.ts'
+import { PlatformManager } from './manager.ts'
 import { ExpressPlatform } from './platforms/http/express/express.ts'
 import { FastifyPlatform } from './platforms/http/fastify/fastify.ts'
 

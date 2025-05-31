@@ -11,7 +11,7 @@ This section provides comprehensive examples of using UEP in different scenarios
 ### Express Example
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 
 // Create Express instance
@@ -36,7 +36,7 @@ await uep.start(3000);
 ### Fastify Example
 
 ```typescript
-import { UEP, FastifyPlatform } from '@uep/core';
+import { UEP, FastifyPlatform } from '@uep/manager';
 import fastify from 'fastify';
 
 // Create Fastify instance
@@ -64,7 +64,7 @@ await uep.start(3000);
 Here's a complete REST API example with CRUD operations:
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 
 const app = express();
@@ -135,7 +135,7 @@ await uep.start(3000);
 Here's an example of implementing proper error handling:
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 
 const app = express();
@@ -192,7 +192,7 @@ await uep.start(3000);
 Here's an example of handling file uploads:
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
@@ -239,7 +239,7 @@ await uep.start(3000);
 Here's a preview of how realtime communication will work:
 
 ```typescript
-import { UEP, SocketIOPlatform } from '@uep/core';
+import { UEP, SocketIOPlatform } from '@uep/manager';
 
 const uep = new UEP({
   realtime: new SocketIOPlatform()
@@ -267,7 +267,7 @@ await uep.start(3000);
 Here's a preview of how message queuing will work:
 
 ```typescript
-import { UEP, RabbitMQPlatform } from '@uep/core';
+import { UEP, RabbitMQPlatform } from '@uep/manager';
 
 const uep = new UEP({
   messaging: new RabbitMQPlatform()

@@ -1,7 +1,7 @@
 {
-  "name": "@uep/core",
+  "name": "@uep/manager",
   "version": "0.1.0",
-  "description": "provide a unified platform for handling HTTP, queue-based / request-response microservices, and WebSocket communications",
+  "description": "platform manager abstraction for handling HTTP, queue-based / request-response microservices, and WebSocket communications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only playground/index.ts",
+    "dev": "tsx playground/index.ts",
     "test": "tsx test.ts",
     "test:coverage": "c8 tsx test.ts"
   },

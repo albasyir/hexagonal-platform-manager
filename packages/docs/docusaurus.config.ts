@@ -6,11 +6,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Unified Exagonal Platform',
-  tagline: 'Unified API for Express, Fastify, and More - One Definition, Cross Platform and Runtime',
+  tagline: 'Unified API for Express, Fastify, and More - One Definition for any Platform and any Runtime',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://uep.vercep.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -18,7 +18,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'albasyir', // Usually your GitHub org/user name.
-  projectName: 'platform-manager', // Usually your repo name.
+  projectName: 'uep', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -38,7 +38,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/albasyir/platform-manager/tree/main/packages/docs/',
+            'https://github.com/albasyir/uep/tree/main/packages/docs/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -64,7 +64,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/albasyir/platform-manager',
+          href: 'https://github.com/albasyir/uep',
           label: 'GitHub',
           position: 'right',
         },
@@ -87,12 +87,12 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/albasyir/platform-manager',
+              href: 'https://github.com/albasyir/uep',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Albasyir Group. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Kamal Company. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
@@ -101,7 +101,7 @@ const config: Config = {
     // Enhanced homepage configuration
     announcementBar: {
       id: 'support_us',
-      content: '⭐️ If you like UEP, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/albasyir/platform-manager">GitHub</a>! ⭐️',
+      content: '⭐️ If you like UEP, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/albasyir/uep">GitHub</a>! ⭐️',
       backgroundColor: '#fafbfc',
       textColor: '#091E42',
       isCloseable: true,
@@ -111,44 +111,7 @@ const config: Config = {
         name: 'keywords',
         content: 'http server, express, fastify, typescript, nodejs, api, microservices, websocket',
       },
-    ],
-    // Hero section
-    hero: {
-      title: 'UEP',
-      tagline: 'Unified API for Express, Fastify, and More - One Router, Cross Platform',
-      image: 'img/hero-image.png',
-      alt: 'UEP Hero Image',
-    },
-    // Features section
-    features: [
-      {
-        title: 'Unified API',
-        description: 'Write your routes once and run them on any supported platform. Switch between Express and Fastify without changing your code.',
-        icon: '🔄',
-      },
-      {
-        title: 'TypeScript First',
-        description: 'Built with TypeScript from the ground up, providing excellent type safety and developer experience.',
-        icon: '📦',
-      },
-      {
-        title: 'Simple & Intuitive',
-        description: 'Clean and consistent API that makes it easy to build and maintain your applications.',
-        icon: '✨',
-      },
-      {
-        title: 'Extensible',
-        description: 'Easy to extend with new platforms and features. Add support for your favorite HTTP server.',
-        icon: '🔌',
-      },
-    ],
-    // Call to action
-    cta: {
-      title: 'Ready to Get Started?',
-      description: 'Start building your next application with UEP today.',
-      buttonText: 'Get Started',
-      buttonLink: '/docs/intro',
-    },
+    ]
   } satisfies Preset.ThemeConfig,
 };
 

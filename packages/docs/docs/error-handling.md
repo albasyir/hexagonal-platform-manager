@@ -66,7 +66,7 @@ router.get('/users/:id', (req) => {
 You can set up a global error handler to handle all errors consistently:
 
 ```typescript
-import { UEP, ExpressPlatform } from '@uep/core';
+import { UEP, ExpressPlatform } from '@uep/manager';
 import express from 'express';
 
 const app = express();

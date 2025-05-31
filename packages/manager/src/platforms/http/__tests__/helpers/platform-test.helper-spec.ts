@@ -18,8 +18,8 @@ export const runPlatformTest = (
   testName: string,
   testFn: (platform: HttpPlatform) => Promise<void>
 ) => {
-  platforms.forEach(({ name, PlatformClass }) => {
-    test(`${testName} - ${name} Platform`, async () => {
+  platforms.forEach(async ({ name, PlatformClass }) => {
+    test(`[${name} Platform]: ${testName}`, async () => {
       const platform = new PlatformClass()
       try {
         await testFn(platform)
