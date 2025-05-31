@@ -80,7 +80,7 @@ function Benefits() {
   return (
     <div className={styles.benefits}>
       <div className="container">
-        <h2 className={styles.benefitsTitle}>Why Choose Platform Manager?</h2>
+        <h2 className={styles.benefitsTitle}>Why Choose UEP?</h2>
         <div className={styles.benefitsGrid}>
           <div className={styles.benefitCard}>
             <div className={styles.benefitIcon}>🚀</div>
@@ -108,6 +108,40 @@ function Benefits() {
   );
 }
 
+function RuntimeSupport() {
+  return (
+    <div className={styles.runtimeSupport}>
+      <div className="container">
+        <h2 className={styles.runtimeTitle}>Run Anywhere</h2>
+        <p className={styles.runtimeSubtitle}>Choose your favorite runtime environment</p>
+        <div className={styles.runtimeGrid}>
+          <div className={styles.runtimeCard}>
+            <div className={styles.runtimeIcon}>
+              <img src="/img/nodejs-logo.svg" alt="Node.js" />
+            </div>
+            <h3>Node.js</h3>
+            <p>Fully tested and production-ready</p>
+          </div>
+          <div className={styles.runtimeCard}>
+            <div className={styles.runtimeIcon}>
+              <img src="/img/bun-logo.svg" alt="Bun" />
+            </div>
+            <h3>Bun</h3>
+            <p>Lightning fast with native support</p>
+          </div>
+          <div className={styles.runtimeCard}>
+            <div className={styles.runtimeIcon}>
+              <img src="/img/deno-logo.png" alt="Deno" />
+            </div>
+            <h3>Deno</h3>
+            <p>Secure by default with TypeScript</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -119,6 +153,7 @@ export default function Home(): ReactNode {
         {/* <HomepageFeatures /> */}
         <CodeExample />
         <Benefits />
+        <RuntimeSupport />
       </main>
     </Layout>
   );

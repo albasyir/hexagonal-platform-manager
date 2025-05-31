@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import { runPlatformTest } from './helpers/uvu-platform-test.helper.ts';
+import { runPlatformTest } from './helpers/platform-test.helper-spec.ts';
 import { HttpPlatform } from '../../../types/http-platform.ts';
 
 runPlatformTest('should handle URL parameters', async (platform: HttpPlatform) => {

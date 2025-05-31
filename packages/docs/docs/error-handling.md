@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Error Handling
 
-Platform Manager provides a robust error handling system that works consistently across different HTTP platforms. This guide explains how to handle errors effectively in your application.
+UEP provides a robust error handling system that works consistently across different platforms (HTTP, Realtime, and Messaging). This guide explains how to handle errors effectively in your application using the Protocol Handler.
 
 ## Basic Error Handling
 
@@ -66,13 +66,13 @@ router.get('/users/:id', (req) => {
 You can set up a global error handler to handle all errors consistently:
 
 ```typescript
-import { PlatformManager, ExpressPlatform } from '@albasyir/platform-manager';
+import { UEP, ExpressPlatform } from '@uep/core';
 import express from 'express';
 
 const app = express();
 app.use(express.json());
 
-const platform = new PlatformManager({
+const uep = new UEP({
   http: new ExpressPlatform({ reuseInstance: app })
 });
 
@@ -176,16 +176,34 @@ app.use((err: Error, req: any, res: any, next: any) => {
 });
 ```
 
+## Platform-specific Error Handling
+
+### HTTP Platform
+- Standard HTTP status codes
+- JSON error responses
+- Middleware-based error handling
+
+### Realtime Platform (Coming Soon)
+- Event-based error handling
+- Connection error recovery
+- Room-specific error handling
+
+### Messaging Platform (Coming Soon)
+- Message delivery failure handling
+- Queue-specific error handling
+- Dead letter queue management
+
 ## Best Practices
 
 1. **Use Custom Error Classes**: Create specific error classes for different types of errors
-2. **Consistent Error Format**: Use a consistent format for error responses
+2. **Consistent Error Format**: Use a consistent format for error responses across all platforms
 3. **Proper Error Logging**: Log errors with appropriate context
 4. **Graceful Error Recovery**: Handle errors gracefully and provide meaningful messages
 5. **Type Safety**: Use TypeScript to ensure type safety in error handling
+6. **Protocol Handler Integration**: Leverage the Protocol Handler for cross-platform error handling
 
 ## Next Steps
 
-- Learn about [Routing](./routing) to handle different HTTP methods and paths
+- Learn about [Routing](./routing) to handle different protocols and paths
 - Explore [Platform Configuration](./platform-config) for advanced setup options
 - Check out [Examples](./examples) for more detailed usage scenarios 

@@ -4,14 +4,14 @@ sidebar_position: 2
 
 # Routing
 
-Platform Manager provides a unified routing system that works consistently across different HTTP platforms. The routing API is designed to be simple and intuitive while supporting all common HTTP methods and features.
+UEP provides a unified routing system that works consistently across different platforms (HTTP, Realtime, and Messaging). The routing API is designed to be simple and intuitive while supporting all common protocols and features.
 
 ## Basic Routing
 
 The router supports all standard HTTP methods: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`. Here's how to use them:
 
 ```typescript
-const router = platform.router;
+const router = uep.router;
 
 // GET request
 router.get('/hello', () => 'Hello World!');
@@ -111,7 +111,7 @@ router.get('/empty', () => null);
 
 ## Error Handling
 
-You can throw errors in your route handlers, and they will be properly handled:
+You can throw errors in your route handlers, and they will be properly handled by the Protocol Handler:
 
 ```typescript
 router.get('/users/:id', (req) => {
@@ -127,9 +127,10 @@ router.get('/users/:id', (req) => {
 
 1. **Keep Route Handlers Simple**: Extract complex logic into separate service functions
 2. **Use TypeScript**: Take advantage of TypeScript for better type safety
-3. **Validate Input**: Always validate request parameters, query parameters, and body
+3. **Validate Input**: Use the built-in Zod validation for request parameters, query parameters, and body
 4. **Handle Errors**: Implement proper error handling for all routes
 5. **Use Consistent Response Format**: Maintain a consistent structure for all API responses
+6. **Leverage Interceptors**: Use the interceptor system for cross-cutting concerns
 
 ## Next Steps
 

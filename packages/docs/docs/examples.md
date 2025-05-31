@@ -4,39 +4,39 @@ sidebar_position: 4
 
 # Examples
 
-This section provides comprehensive examples of using Platform Manager in different scenarios. Each example demonstrates best practices and common use cases.
+This section provides comprehensive examples of using UEP in different scenarios. Each example demonstrates best practices and common use cases.
 
 ## Basic Server Setup
 
 ### Express Example
 
 ```typescript
-import { PlatformManager, ExpressPlatform } from '@albasyir/platform-manager';
+import { UEP, ExpressPlatform } from '@uep/core';
 import express from 'express';
 
 // Create Express instance
 const app = express();
 app.use(express.json());
 
-// Initialize Platform Manager
-const platform = new PlatformManager({
+// Initialize UEP
+const uep = new UEP({
   http: new ExpressPlatform({ reuseInstance: app })
 });
 
-const router = platform.router;
+const router = uep.router;
 
 // Define routes
 router.get('/', () => 'Hello from Express!');
 router.get('/health', () => ({ status: 'ok' }));
 
 // Start server
-await platform.start(3000);
+await uep.start(3000);
 ```
 
 ### Fastify Example
 
 ```typescript
-import { PlatformManager, FastifyPlatform } from '@albasyir/platform-manager';
+import { UEP, FastifyPlatform } from '@uep/core';
 import fastify from 'fastify';
 
 // Create Fastify instance
@@ -44,19 +44,19 @@ const app = fastify({
   logger: true
 });
 
-// Initialize Platform Manager
-const platform = new PlatformManager({
+// Initialize UEP
+const uep = new UEP({
   http: new FastifyPlatform({ reuseInstance: app })
 });
 
-const router = platform.router;
+const router = uep.router;
 
 // Define routes
 router.get('/', () => 'Hello from Fastify!');
 router.get('/health', () => ({ status: 'ok' }));
 
 // Start server
-await platform.start(3000);
+await uep.start(3000);
 ```
 
 ## REST API Example
@@ -64,17 +64,17 @@ await platform.start(3000);
 Here's a complete REST API example with CRUD operations:
 
 ```typescript
-import { PlatformManager, ExpressPlatform } from '@albasyir/platform-manager';
+import { UEP, ExpressPlatform } from '@uep/core';
 import express from 'express';
 
 const app = express();
 app.use(express.json());
 
-const platform = new PlatformManager({
+const uep = new UEP({
   http: new ExpressPlatform({ reuseInstance: app })
 });
 
-const router = platform.router;
+const router = uep.router;
 
 // In-memory database
 const users = new Map();
@@ -127,7 +127,7 @@ router.delete('/users/:id', (req) => {
   return { message: 'User deleted', id };
 });
 
-await platform.start(3000);
+await uep.start(3000);
 ```
 
 ## Error Handling Example
@@ -135,17 +135,17 @@ await platform.start(3000);
 Here's an example of implementing proper error handling:
 
 ```typescript
-import { PlatformManager, ExpressPlatform } from '@albasyir/platform-manager';
+import { UEP, ExpressPlatform } from '@uep/core';
 import express from 'express';
 
 const app = express();
 app.use(express.json());
 
-const platform = new PlatformManager({
+const uep = new UEP({
   http: new ExpressPlatform({ reuseInstance: app })
 });
 
-const router = platform.router;
+const router = uep.router;
 
 // Custom error class
 class ValidationError extends Error {
@@ -184,7 +184,7 @@ app.use((err: Error, req: any, res: any, next: any) => {
   });
 });
 
-await platform.start(3000);
+await uep.start(3000);
 ```
 
 ## File Upload Example
@@ -192,7 +192,7 @@ await platform.start(3000);
 Here's an example of handling file uploads:
 
 ```typescript
-import { PlatformManager, ExpressPlatform } from '@albasyir/platform-manager';
+import { UEP, ExpressPlatform } from '@uep/core';
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
@@ -209,11 +209,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-const platform = new PlatformManager({
+const uep = new UEP({
   http: new ExpressPlatform({ reuseInstance: app })
 });
 
-const router = platform.router;
+const router = uep.router;
 
 // Single file upload
 router.post('/upload', (req) => {
@@ -231,11 +231,64 @@ router.post('/upload-multiple', (req) => {
   return { message: 'Files uploaded successfully', files: req.files };
 });
 
-await platform.start(3000);
+await uep.start(3000);
+```
+
+## Realtime Example (Coming Soon)
+
+Here's a preview of how realtime communication will work:
+
+```typescript
+import { UEP, SocketIOPlatform } from '@uep/core';
+
+const uep = new UEP({
+  realtime: new SocketIOPlatform()
+});
+
+const router = uep.router;
+
+// Handle realtime events
+router.on('message', (data) => {
+  // Handle incoming message
+  return { received: true, timestamp: new Date().toISOString() };
+});
+
+// Join room
+router.on('join', (data) => {
+  const { room } = data;
+  return { joined: true, room };
+});
+
+await uep.start(3000);
+```
+
+## Messaging Example (Coming Soon)
+
+Here's a preview of how message queuing will work:
+
+```typescript
+import { UEP, RabbitMQPlatform } from '@uep/core';
+
+const uep = new UEP({
+  messaging: new RabbitMQPlatform()
+});
+
+const router = uep.router;
+
+// Handle message queue
+router.queue('tasks', (message) => {
+  // Process message
+  return { processed: true, timestamp: new Date().toISOString() };
+});
+
+// Publish message
+router.publish('tasks', { task: 'process-data' });
+
+await uep.start();
 ```
 
 ## Next Steps
 
-- Learn about [Routing](./routing) to handle different HTTP methods and paths
+- Learn about [Routing](./routing) to handle different protocols and paths
 - Explore [Platform Configuration](./platform-config) for advanced setup options
 - Check out [Error Handling](./error-handling) for advanced error management 

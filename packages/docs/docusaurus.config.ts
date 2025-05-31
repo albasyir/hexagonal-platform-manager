@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Platform Manager',
-  tagline: 'Unified API for Express, Fastify, and More - One Router, Cross Platform',
+  title: 'Unified Exagonal Platform',
+  tagline: 'Unified API for Express, Fastify, and More - One Definition, Cross Platform and Runtime',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -51,9 +51,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Platform Manager',
+      title: 'UEP',
       logo: {
-        alt: 'Platform Manager Logo',
+        alt: 'UEP Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -101,7 +101,7 @@ const config: Config = {
     // Enhanced homepage configuration
     announcementBar: {
       id: 'support_us',
-      content: '⭐️ If you like Platform Manager, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/albasyir/platform-manager">GitHub</a>! ⭐️',
+      content: '⭐️ If you like UEP, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/albasyir/platform-manager">GitHub</a>! ⭐️',
       backgroundColor: '#fafbfc',
       textColor: '#091E42',
       isCloseable: true,
@@ -114,10 +114,10 @@ const config: Config = {
     ],
     // Hero section
     hero: {
-      title: 'Platform Manager',
+      title: 'UEP',
       tagline: 'Unified API for Express, Fastify, and More - One Router, Cross Platform',
       image: 'img/hero-image.png',
-      alt: 'Platform Manager Hero Image',
+      alt: 'UEP Hero Image',
     },
     // Features section
     features: [
@@ -145,7 +145,7 @@ const config: Config = {
     // Call to action
     cta: {
       title: 'Ready to Get Started?',
-      description: 'Start building your next application with Platform Manager today.',
+      description: 'Start building your next application with UEP today.',
       buttonText: 'Get Started',
       buttonLink: '/docs/intro',
     },

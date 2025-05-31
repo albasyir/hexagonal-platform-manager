@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { runPlatformTest, expectEqual, expectMatchObject } from './helpers/uvu-platform-test.helper.ts';
+import { runPlatformTest, expectEqual, expectMatchObject } from './helpers/platform-test.helper-spec.ts';
 import { HttpPlatform } from '../../../types/http-platform.ts';
 
 runPlatformTest('should handle GET request with query parameters', async (platform: HttpPlatform) => {
